@@ -11,12 +11,12 @@ const LogoutPage = () => {
   const { sessionToken, setSessionToken } = useAppContext();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!sessionToken) {
-      toast.error("You are not logged in. Please log in first.");
-      router.push("/login");
-    }
-  }, [sessionToken, router]);
+  // useEffect(() => {
+  //   if (!sessionToken) {
+  //     toast.error("You are not logged in. Please log in first.");
+  //     router.push("/login");
+  //   }
+  // }, [sessionToken, router]);
 
   const handleLogout = async () => {
     try {

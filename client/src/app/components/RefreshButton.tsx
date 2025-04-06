@@ -1,6 +1,6 @@
 "use client";
 
-import { revalidatePosts } from "../actions/revalidatePosts";
+import revalidatePosts from "../actions/revalidateProducts";
 
 export default function RefreshButton() {
   const handleRefresh = async () => {

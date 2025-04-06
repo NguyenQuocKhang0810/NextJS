@@ -3,7 +3,7 @@ import RegisterForm from "./register-form";
 
 const RegisterPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mt-8">
       <h1 className="text-2xl mb-5">Register Page</h1>
       <RegisterForm />
     </div>

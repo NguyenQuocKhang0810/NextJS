@@ -15,8 +15,12 @@ export async function apiRequest<T>(
   const url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}${normalizedEndpoint}`;
 
   const defaultHeaders = {
-    "Content-Type": "application/json",
+    ...(options.body instanceof FormData
+      ? {}
+      : { "Content-Type": "application/json" }),
   };
+
+  const requestBody = options.body ? JSON.stringify(options.body) : undefined;
 
   const config: RequestInit = {
     method: options.method ?? "GET",
@@ -24,12 +28,11 @@ export async function apiRequest<T>(
       ...defaultHeaders,
       ...options.headers,
     },
-    body: options.body ? JSON.stringify(options.body) : undefined,
+    body: options.body instanceof FormData ? options.body : requestBody,
     next: options.next,
   };
 
   try {
-    console.log("Requesting:", url, "at:", new Date().toLocaleTimeString());
     const response = await fetch(url, config);
     const data = await response.json();
 
