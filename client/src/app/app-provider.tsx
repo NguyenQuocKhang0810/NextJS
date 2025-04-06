@@ -18,7 +18,9 @@ export const AppProvider: React.FC<{
   );
 
   return (
-    <AppContext.Provider value={contextValue as any}>{children}</AppContext.Provider>
+    <AppContext.Provider value={contextValue as any}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -108,18 +112,33 @@
 @keyframes fade-in {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes slide-in-from-top {
   from {
-    transform: translateY(-0.5rem);
+    transform: translateY(-50px);
   }
   to {
     transform: translateY(0);
+  }
+}
+
+/* Animation for the circular pattern */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: brightness(0.8) drop-shadow(0 0 5px rgba(0, 210, 223, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 210, 223, 0.7));
   }
 }
 
@@ -187,4 +206,54 @@
 }
 .breadcrumb-item:nth-child(5) {
   animation-delay: 0.25s;
+}
+
+.custom-padding {
+  position: relative;
+}
+
+.custom-padding::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; /* Bằng với sideOffset */
+  left: 0;
+  width: 100%;
+  height: 8px; /* Bằng với sideOffset */
+  background: transparent;
+  pointer-events: auto; /* Đảm bảo vùng này nhận sự kiện hover */
+}
+
+.pulse-animation {
+  animation: pulse 3s infinite;
+}
+
+/* Ensure the login form is properly centered and contained */
+.login-container {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Improve input field styling for better visibility */
+.login-input {
+  background-color: rgba(26, 34, 55, 0.8) !important;
+  border: 1px solid rgba(42, 58, 90, 0.8) !important;
+  color: white !important;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Ensure the button has proper contrast */
+.login-button {
+  background-color: #00d2df !important;
+  color: #1a2237 !important;
+  font-weight: 500 !important;
+}
+
+.login-button:hover {
+  background-color: #00c0cc !important;
 }
